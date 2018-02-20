@@ -1,0 +1,60 @@
+{
+  "name": "@morphling/core",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "author": "cypherix93",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/project-morphling/core.git"
+  },
+  "homepage": "https://github.com/project-morphling/core#readme",
+  "bugs": {
+    "url": "https://github.com/project-morphling/core/issues"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "bootswatch": "^4.0.0",
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.20.1",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "zepto": "^1.2.0"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "glob": "^7.1.2",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "resolve-url-loader": "^2.2.1",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "ts-loader": "^3.2.0",
+    "typescript": "^2.6.2",
+    "vue-loader": "^13.6.1",
+    "webpack": "^3.10.0",
+    "webpack-html-plugin": "^0.1.1",
+    "webpack-manifest-plugin": "^1.3.2",
+    "webpack-merge": "^4.1.1",
+    "yargs": "^10.0.3"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "yarn install --force & yarn run clean & yarn run wp",
+    "wp": "yarn run wp:setup & yarn run wp:app",
+    "wp:setup": "yarn run wp:vendor & yarn run wp:theme",
+    "wp:app": "webpack --config webpack.app.config.js",
+    "wp:theme": "webpack --config webpack.theme.config.js",
+    "wp:vendor": "webpack --config webpack.vendor.config.js",
+    "wp:app:dev": "yarn run wp:app --env.dev",
+    "wp:theme:dev": "yarn run wp:theme --env.dev",
+    "wp:app:watch": "yarn run wp:app --env.watch"
+  }
+}
