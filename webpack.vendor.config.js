@@ -17,7 +17,7 @@ const config = {
     plugins: [
         new ManifestPlugin({
             fileName: 'vendor-manifest.json',
-            writeToFileEmit: env.DEV,
+            writeToFileEmit: true,
             publicPath: '/'
         }),
         new webpack.DllPlugin({

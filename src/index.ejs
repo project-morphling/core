@@ -10,8 +10,12 @@ const manifest = htmlWebpackPlugin.options.manifest || {};
 
         <link rel="shortcut icon" href="<%= manifest['images\\favicon.ico'] %>">
 
+        <% if (manifest['theme.css']) { %>
         <link rel="stylesheet" href="<%= manifest['theme.css'] %>"/>
+        <% } %>
+        <% if (manifest['app.css']) { %>
         <link rel="stylesheet" href="<%= manifest['app.css'] %>"/>
+        <% } %>
     </head>
     <body>
         <div id="app-container"></div>

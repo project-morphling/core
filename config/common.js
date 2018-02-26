@@ -8,7 +8,8 @@ const common = {
     output: {
         path: env.paths.dist,
         publicPath: '/',
-        filename: 'js/[name].[chunkhash:8].js'
+        filename: 'js/[name].[chunkhash:8].js',
+        library: '[name]'
     },
     resolve: {
         symlinks: false,
@@ -20,11 +21,10 @@ const common = {
     plugins: [
         new webpack.HashedModuleIdsPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.DefinePlugin({
-            ___PRODUCTION___: JSON.stringify(!env.DEV)
-        }),
         new webpack.ProvidePlugin({
-            $: 'zepto'
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
         })
     ],
     devtool: env.dev ? 'cheap-module-source-map' : 'source-map',
