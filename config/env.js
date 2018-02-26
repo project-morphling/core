@@ -1,8 +1,12 @@
 const path = require('path');
 const {argv} = require('yargs');
 
-exports.environment = argv.env || process.env.NODE_ENV || 'production';
-exports.watch = !!argv.env && 'watch' in argv.env;
+/* Configure the env */
+require('dotenv').config();
+
+/* Environment options */
+exports.environment = process.env.NODE_ENV || 'production';
+exports.watch = 'watch' in argv;
 exports.dev = exports.watch || exports.environment === 'development';
 exports.min = (argv.env && 'min' in argv.env) || !exports.dev;
 
