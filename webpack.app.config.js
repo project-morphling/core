@@ -4,6 +4,7 @@ const path = require('path');
 
 const ManifestPlugin = require('webpack-manifest-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlInjectManifestPlugin = require('./config/plugins/HtmlInjectManifestPlugin');
 
 const env = require('./config/env');
 const common = require('./config/common');
@@ -27,6 +28,12 @@ const config = {
         new HtmlWebpackPlugin({
             inject: false,
             template: path.join(env.paths.src, 'index.ejs')
+        }),
+        new HtmlInjectManifestPlugin({
+            files: [
+                path.join(env.paths.dist, 'vendor-manifest.json'),
+                path.join(env.paths.dist, 'theme-manifest.json')
+            ]
         })
     ]
 };
