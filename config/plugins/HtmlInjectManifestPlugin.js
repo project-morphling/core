@@ -49,15 +49,13 @@ class HtmlInjectManifestPlugin {
         });
         
         /* This is so that the manifest files are picked up by webpack watch */
-        // compiler.plugin('emit', (compilation, callback) => {
-        //     for (let file of this.options.files) {
-        //         console.log(file);
-        //
-        //         compilation.fileDependencies.push(file);
-        //     }
-        //
-        //     callback();
-        // });
+        compiler.plugin('emit', (compilation, callback) => {
+            for (let file of this.options.files) {
+                compilation.fileDependencies.push(file);
+            }
+
+            callback();
+        });
     }
 }
 
