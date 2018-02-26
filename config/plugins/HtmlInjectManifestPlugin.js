@@ -39,7 +39,6 @@ class HtmlInjectManifestPlugin {
                 mergedManifest = Object.assign(mergedManifest, manifest);
                 
                 compilation.plugin('html-webpack-plugin-before-html-generation', (htmlPluginData, htmlPluginCallback) => {
-                    htmlPluginData.plugin.options = htmlPluginData.options || {};
                     htmlPluginData.plugin.options.manifest = mergedManifest;
                     
                     htmlPluginCallback(null, htmlPluginData);
