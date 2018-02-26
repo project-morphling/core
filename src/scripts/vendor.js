@@ -4,7 +4,8 @@ import 'vuex';
 import 'vue-router';
 
 // Utils
-import 'zepto';
+import 'jquery';
+import 'popper.js';
 import 'bootstrap';
 import 'moment';
 
